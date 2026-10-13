@@ -1,0 +1,32 @@
+# Baut das Plugin automatisch auf GitHub (kostenlos), ohne dass du etwas installieren musst.
+# Jedes Mal, wenn du Änderungen hochlädst, entsteht eine neue CoinShop.jar unter "Actions" > "Artifacts".
+name: Plugin bauen
+
+on:
+  push:
+  workflow_dispatch:   # erlaubt auch manuelles Starten über den Button "Run workflow"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code herunterladen
+        uses: actions/checkout@v4
+
+      - name: Java 25 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Wrapper ausführbar machen
+        run: chmod +x gradlew
+
+      - name: Plugin bauen
+        run: ./gradlew build --no-daemon
+
+      - name: Fertige JAR bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: CoinShop
+          path: build/libs/CoinShop.jar
