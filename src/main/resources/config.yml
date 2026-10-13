@@ -1,0 +1,777 @@
+# ============================================================
+#  CoinShop - Einstellungen
+#  Nach Änderungen im Spiel / in der Konsole: /coinsadmin reload
+#  Hinweis: Wenn du eine alte config.yml hast, lösche sie einmal
+#  (plugins/CoinShop/config.yml), damit diese neue erzeugt wird.
+# ============================================================
+
+# ---------------- Erfolge (Achievements) ----------------
+# Je schwieriger der Erfolg, desto mehr Coins. So wird die Belohnung bestimmt:
+#   1. Steht der Erfolg unter "overrides"            -> genau dieser Betrag
+#   2. Steht er in der Liste "advancements" einer Stufe -> Belohnung dieser Stufe
+#   3. Sonst nach Art des Erfolgs im Spiel (Aufgabe / Ziel / Herausforderung, siehe type-tiers)
+# Erfolge heißen so wie im Spiel, z. B. "minecraft:story/mine_diamond".
+# (Namen, die es nicht gibt, schaden nicht - sie werden einfach nie getroffen.)
+achievements:
+  enabled: true
+  # Welche Stufe gilt standardmäßig für welche Art von Erfolg
+  type-tiers:
+    task: leicht          # normale Aufgabe (eckiges Symbol)
+    goal: mittel          # Ziel (abgerundetes Symbol)
+    challenge: schwer     # Herausforderung (gezacktes Symbol)
+  tiers:
+    leicht: {name: "Leicht", reward: 10}
+    mittel: {name: "Mittel", reward: 30}
+    schwer: {name: "Schwer", reward: 100}
+    # Besonders schwierige Erfolge (handverlesen, zählt vor der Art des Erfolgs)
+    sehr-schwer:
+      name: "Sehr schwer"
+      reward: 250
+      advancements:
+        - "minecraft:end/kill_dragon"
+        - "minecraft:end/dragon_egg"
+        - "minecraft:end/elytra"
+        - "minecraft:end/respawn_dragon"
+        - "minecraft:end/dragon_breath"
+        - "minecraft:nether/summon_wither"
+        - "minecraft:nether/get_wither_skull"
+        - "minecraft:nether/create_beacon"
+        - "minecraft:nether/netherite_armor"
+        - "minecraft:nether/obtain_ancient_debris"
+        - "minecraft:nether/uneasy_alliance"
+        - "minecraft:nether/ride_strider_in_overworld_lava"
+        - "minecraft:adventure/totem_of_undying"
+        - "minecraft:adventure/hero_of_the_village"
+        - "minecraft:adventure/very_very_frightening"
+        - "minecraft:adventure/sniper_duel"
+        - "minecraft:adventure/arbalistic"
+        - "minecraft:adventure/spyglass_at_dragon"
+        - "minecraft:adventure/overoverkill"
+        - "minecraft:husbandry/obtain_netherite_hoe"
+    extrem:
+      name: "Extrem"
+      reward: 600
+      advancements:
+        - "minecraft:adventure/kill_all_mobs"
+        - "minecraft:adventure/adventuring_time"
+        - "minecraft:adventure/trim_with_all_exclusive_armor_patterns"
+        - "minecraft:nether/all_effects"
+        - "minecraft:nether/all_potions"
+        - "minecraft:nether/create_full_beacon"
+        - "minecraft:husbandry/bred_all_animals"
+        - "minecraft:husbandry/complete_catalogue"
+        - "minecraft:husbandry/balanced_diet"
+        - "minecraft:husbandry/leash_all_frog_variants"
+        - "minecraft:husbandry/whole_pack"
+  # Einzelne Erfolge mit einem festen Betrag (hat Vorrang vor allem anderen). Beispiel:
+  overrides:
+    # "minecraft:story/mine_diamond": 50
+
+# Geheime Erfolge: Belohnung je nach Schwierigkeit ("tier" ist nur der angezeigte Name der Stufe).
+# Namen und Beschreibungen stehen in messages.yml unter "secret".
+secret-achievements:
+  kleiner-fisch:  {tier: leicht, coins: 20}
+  grosser-fisch:  {tier: schwer, coins: 150}
+  blumentopf:     {tier: leicht, coins: 10}
+  phantom:        {tier: mittel, coins: 40}
+  bier:           {tier: mittel, coins: 30}
+  fledermaus:     {tier: leicht, coins: 20}
+  baby-zombie:    {tier: mittel, coins: 40}
+  ei:             {tier: mittel, coins: 50}
+  lohenrute:      {tier: schwer, coins: 100}
+  baby-villager:  {tier: leicht, coins: 15}
+  teppich:        {tier: leicht, coins: 10}
+  frosch:         {tier: mittel, coins: 40}
+  schwein:        {tier: leicht, coins: 10}
+  kante:          {tier: mittel, coins: 50}
+
+# ---------------- Ranglisten ----------------
+# Die Zahlen kommen aus den normalen Minecraft-Statistiken (auch von VOR der Plugin-Installation).
+# Die Top 5 jeder Rangliste bekommen dieses Bonus-Einkommen pro Tag (Platz 1, 2, 3, 4, 5):
+rankings:
+  bonus: [10, 5, 3, 2, 1]
+  # "Wenigste Tode" zählt nur Spieler mit mindestens so vielen Minuten Spielzeit
+  min-playtime-minutes: 120
+  # Wie oft die Statistiken der Online-Spieler eingelesen werden
+  sync-seconds: 120
+
+# ---------------- Kollektionen ----------------
+# Wer ALLE Items einer Kollektion schon einmal besessen hat (Inventar, Endertruhe, aufgesammelt oder
+# hergestellt), bekommt einmalig die Belohnung. Mit * kannst du Gruppen angeben, z. B. "MUSIC_DISC_*".
+# Eigene Kollektionen: einfach einen neuen Eintrag anhängen (Namen der Items wie bei den Preisen).
+# Mit "entity:NAME" (z. B. "entity:ZOMBIE") sind es Kreaturen: Sie zählen, wenn du sie getötet oder
+# durch ein Fernglas angesehen hast.
+collections:
+  schallplatten:
+    name: "Schallplatten"
+    icon: MUSIC_DISC_CAT
+    reward: 8000
+    items: ["MUSIC_DISC_*"]
+  ruestungsverzierungen:
+    name: "Rüstungsverzierungen"
+    icon: SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE
+    reward: 15000
+    items: ["*_ARMOR_TRIM_SMITHING_TEMPLATE"]
+  keramikscherben:
+    name: "Keramikscherben"
+    icon: ARCHER_POTTERY_SHERD
+    reward: 6000
+    items: ["*_POTTERY_SHERD"]
+  koepfe:
+    name: "Köpfe und Schädel"
+    icon: ZOMBIE_HEAD
+    reward: 6000
+    items: [SKELETON_SKULL, WITHER_SKELETON_SKULL, ZOMBIE_HEAD, CREEPER_HEAD, PIGLIN_HEAD, DRAGON_HEAD]
+  netherit:
+    name: "Netherit-Ausrüstung"
+    icon: NETHERITE_CHESTPLATE
+    reward: 10000
+    items: [NETHERITE_SWORD, NETHERITE_PICKAXE, NETHERITE_AXE, NETHERITE_SHOVEL, NETHERITE_HOE,
+            NETHERITE_HELMET, NETHERITE_CHESTPLATE, NETHERITE_LEGGINGS, NETHERITE_BOOTS]
+  seltene-schaetze:
+    name: "Seltene Schätze"
+    icon: NETHER_STAR
+    reward: 25000
+    items: [NETHER_STAR, TOTEM_OF_UNDYING, HEART_OF_THE_SEA, NAUTILUS_SHELL, TRIDENT, SHULKER_SHELL,
+            ECHO_SHARD, BEACON, ENCHANTED_GOLDEN_APPLE, DRAGON_BREATH, SNIFFER_EGG, HEAVY_CORE, MACE]
+  rohstoffe:
+    name: "Rohstoffe"
+    icon: DIAMOND
+    reward: 1500
+    items: [COAL, COPPER_INGOT, IRON_INGOT, GOLD_INGOT, REDSTONE, LAPIS_LAZULI, QUARTZ, AMETHYST_SHARD,
+            EMERALD, DIAMOND, NETHERITE_INGOT]
+  farbstoffe:
+    name: "Farbstoffe"
+    icon: RED_DYE
+    reward: 500
+    items: ["*_DYE"]
+  korallen:
+    name: "Korallen"
+    icon: BRAIN_CORAL
+    reward: 1000
+    items: [TUBE_CORAL, BRAIN_CORAL, BUBBLE_CORAL, FIRE_CORAL, HORN_CORAL,
+            TUBE_CORAL_BLOCK, BRAIN_CORAL_BLOCK, BUBBLE_CORAL_BLOCK, FIRE_CORAL_BLOCK, HORN_CORAL_BLOCK,
+            TUBE_CORAL_FAN, BRAIN_CORAL_FAN, BUBBLE_CORAL_FAN, FIRE_CORAL_FAN, HORN_CORAL_FAN]
+  blumen:
+    name: "Blumen"
+    icon: POPPY
+    reward: 600
+    items: [DANDELION, POPPY, BLUE_ORCHID, ALLIUM, AZURE_BLUET, RED_TULIP, ORANGE_TULIP, WHITE_TULIP,
+            PINK_TULIP, OXEYE_DAISY, CORNFLOWER, LILY_OF_THE_VALLEY, TORCHFLOWER, WITHER_ROSE, SUNFLOWER,
+            LILAC, ROSE_BUSH, PEONY]
+  setzlinge:
+    name: "Setzlinge"
+    icon: OAK_SAPLING
+    reward: 400
+    items: ["*_SAPLING", MANGROVE_PROPAGULE]
+  fische:
+    name: "Fische"
+    icon: COD
+    reward: 250
+    items: [COD, SALMON, TROPICAL_FISH, PUFFERFISH]
+  bannermuster:
+    name: "Bannermuster"
+    icon: FLOWER_BANNER_PATTERN
+    reward: 7000
+    items: ["*_BANNER_PATTERN"]
+  betten:
+    name: "Betten"
+    icon: RED_BED
+    reward: 1500
+    items: ["*_BED"]
+  eimer:
+    name: "Eimer-Varianten"
+    icon: WATER_BUCKET
+    reward: 2500
+    items: [BUCKET, WATER_BUCKET, LAVA_BUCKET, MILK_BUCKET, POWDER_SNOW_BUCKET, COD_BUCKET, SALMON_BUCKET,
+            PUFFERFISH_BUCKET, TROPICAL_FISH_BUCKET, AXOLOTL_BUCKET, TADPOLE_BUCKET]
+  axolotl-farben:
+    name: "Alle Axolotl-Farben"
+    icon: AXOLOTL_BUCKET
+    reward: 4000
+    items: ["axolotl:*"]
+  glasierte-terrakotta:
+    name: "Glasierte Terrakotta"
+    icon: MAGENTA_GLAZED_TERRACOTTA
+    reward: 1500
+    items: ["*_GLAZED_TERRACOTTA"]
+
+  # ---- Kreaturen (getötet oder durch das Fernglas angesehen) ----
+  monster:
+    name: "Monster der Oberwelt"
+    icon: ZOMBIE_HEAD
+    reward: 6000
+    items: ["entity:ZOMBIE", "entity:SKELETON", "entity:CREEPER", "entity:SPIDER", "entity:CAVE_SPIDER", "entity:ENDERMAN",
+            "entity:WITCH", "entity:SLIME", "entity:DROWNED", "entity:HUSK", "entity:STRAY", "entity:PHANTOM",
+            "entity:PILLAGER", "entity:VINDICATOR", "entity:EVOKER", "entity:RAVAGER", "entity:SILVERFISH",
+            "entity:ZOMBIE_VILLAGER", "entity:BOGGED", "entity:BREEZE", "entity:CREAKING"]
+  nether-kreaturen:
+    name: "Nether-Kreaturen"
+    icon: BLAZE_ROD
+    reward: 6000
+    items: ["entity:BLAZE", "entity:GHAST", "entity:MAGMA_CUBE", "entity:WITHER_SKELETON", "entity:PIGLIN",
+            "entity:PIGLIN_BRUTE", "entity:HOGLIN", "entity:ZOGLIN", "entity:ZOMBIFIED_PIGLIN", "entity:STRIDER"]
+  bauernhof:
+    name: "Bauernhoftiere"
+    icon: WHEAT
+    reward: 2500
+    items: ["entity:COW", "entity:MOOSHROOM", "entity:PIG", "entity:SHEEP", "entity:CHICKEN", "entity:HORSE",
+            "entity:DONKEY", "entity:MULE", "entity:RABBIT", "entity:GOAT", "entity:LLAMA", "entity:CAMEL"]
+  wildtiere:
+    name: "Wildtiere"
+    icon: BONE
+    reward: 4000
+    items: ["entity:WOLF", "entity:CAT", "entity:OCELOT", "entity:FOX", "entity:PANDA", "entity:POLAR_BEAR",
+            "entity:PARROT", "entity:BEE", "entity:FROG", "entity:ARMADILLO", "entity:SNIFFER", "entity:BAT"]
+  wasserwesen:
+    name: "Wasserwesen"
+    icon: HEART_OF_THE_SEA
+    reward: 4000
+    items: ["entity:COD", "entity:SALMON", "entity:TROPICAL_FISH", "entity:PUFFERFISH", "entity:SQUID",
+            "entity:GLOW_SQUID", "entity:DOLPHIN", "entity:TURTLE", "entity:AXOLOTL", "entity:TADPOLE",
+            "entity:GUARDIAN", "entity:ELDER_GUARDIAN"]
+  dorfbewohner:
+    name: "Dorfbewohner und Helfer"
+    icon: EMERALD
+    reward: 1500
+    items: ["entity:VILLAGER", "entity:WANDERING_TRADER", "entity:IRON_GOLEM", "entity:SNOW_GOLEM", "entity:ALLAY"]
+  bosse:
+    name: "Bosse"
+    icon: DRAGON_HEAD
+    reward: 15000
+    items: ["entity:WARDEN", "entity:ENDER_DRAGON", "entity:WITHER", "entity:ELDER_GUARDIAN"]
+
+# ---------------- Schlafen ----------------
+# Schlafen genug aktive Spieler einer Welt (Prozent), läuft die Nacht im Zeitraffer ab (nur die Tageszeit,
+# sonst ändert sich nichts). "Aktiv" = nicht im Zuschauer-Modus und nicht länger als afk-minutes bewegungslos.
+sleep:
+  enabled: true
+  percent: 10
+  # Wie viele Zeit-Ticks pro Server-Tick vergehen. 120 = eine ganze Nacht dauert höchstens 5 Sekunden
+  # (kleinere Werte machen es langsamer, die Nacht dauert dann länger als 5 Sekunden)
+  speed: 120
+  afk-minutes: 5
+
+# ---------------- Teleportieren ----------------
+teleport:
+  # Wartezeit vor jeder Teleportation (Sekunden)
+  delay-seconds: 3
+  # So lange ist eine /tpa-Anfrage gültig (Sekunden)
+  request-timeout-seconds: 60
+
+# ---------------- Freecam ----------------
+freecam:
+  enabled: true
+  # So weit darf man sich von seinem Körper entfernen (Blöcke)
+  max-distance: 64
+
+# ---------------- Coins allgemein ----------------
+coins:
+  # Größter Betrag, der auf einmal überwiesen werden darf (Schutz vor Tippfehlern)
+  max-transfer: 1000000000
+  # Einmaliges Startguthaben für Spieler, die zum allerersten Mal beitreten (0 = keins)
+  start-bonus: 100
+
+# ---------------- Login-Serie (Teil des täglichen Einkommens) ----------------
+# Wer an mehreren Tagen hintereinander (Tag = 12:00 bis 12:00 Uhr) auf dem Server ist, bekommt einen
+# Serien-Bonus auf sein tägliches Einkommen: per-day x (Tag der Serie - 1), höchstens bis max-days Tage.
+# Jeder 7. Tag der Serie gibt zusätzlich weekly-bonus. Das Ganze wird mit dem Einkommen beim Shop-Wechsel
+# ausgezahlt (Grundeinkommen steht unter daily-income).
+login-streak:
+  enabled: true
+  per-day: 5
+  max-days: 7
+  weekly-bonus: 100
+
+# ---------------- Tägliche Aufgaben ----------------
+# Jeden Tag (Wechsel zur Shop-Zeit) gibt es für alle dieselben "count" Aufgaben aus dem Pool.
+# amount = [kleinste, größte] Zielmenge, reward = [kleinste, größte] Belohnung (je größer die Aufgabe,
+# desto größer die Belohnung). stat = was gezählt wird (mined, wood, stone, diamonds, fishing, creatures,
+# walked, placed, trades, playtime). Wer alle Aufgaben des Tages schafft, bekommt zusätzlich bonus-all.
+quests:
+  enabled: true
+  count: 3
+  bonus-all: 60
+  pool:
+    mined:     {stat: mined,     name: "Blöcke abbauen",    unit: "Blöcke",   icon: DIAMOND_PICKAXE, amount: [200, 600],  reward: [20, 60]}
+    wood:      {stat: wood,      name: "Holz sammeln",      unit: "Stämme",   icon: OAK_LOG,         amount: [40, 120],   reward: [20, 55]}
+    stone:     {stat: stone,     name: "Stein abbauen",     unit: "Blöcke",   icon: COBBLESTONE,     amount: [150, 500],  reward: [15, 50]}
+    diamonds:  {stat: diamonds,  name: "Diamanterze finden", unit: "Erze",    icon: DIAMOND_ORE,     amount: [3, 10],     reward: [40, 110]}
+    fishing:   {stat: fishing,   name: "Angeln",            unit: "Fänge",    icon: FISHING_ROD,     amount: [10, 30],    reward: [20, 55]}
+    creatures: {stat: creatures, name: "Kreaturen besiegen", unit: "Kreaturen", icon: IRON_SWORD,    amount: [15, 50],    reward: [20, 60]}
+    walked:    {stat: walked,    name: "Weit wandern",      unit: "Blöcke",   icon: LEATHER_BOOTS,   amount: [1000, 3000], reward: [15, 45]}
+    placed:    {stat: placed,    name: "Bauen",             unit: "Blöcke",   icon: BRICKS,          amount: [150, 500],  reward: [15, 50]}
+    trades:    {stat: trades,    name: "Mit Dorfbewohnern handeln", unit: "Handel", icon: EMERALD,   amount: [3, 10],     reward: [30, 80]}
+
+# ---------------- Titel ----------------
+# Titel stehen in Chat und Tab-Liste vor dem Namen. Ein Spieler kann mehrere besitzen, trägt aber nur einen
+# (Auswahl im Menü /titel). "color" ist ein Minecraft-Farbname (gold, aqua, red, green, dark_purple ...).
+titles:
+  richest: {name: "Der Reichste", color: gold, icon: GOLD_INGOT}
+  # Platz-1-Titel: gehört dem Ersten der Rangliste, solange er Erster ist
+  rank:
+    diamonds:     {name: "Diamantkönig",     color: aqua}
+    debris:       {name: "Netherit-Jäger",   color: dark_purple}
+    wood:         {name: "Holzfäller",       color: yellow}
+    stone:        {name: "Steinmetz",        color: gray}
+    fishing:      {name: "Angelmeister",     color: blue}
+    creatures:    {name: "Kreaturenjäger",   color: red}
+    deaths-least: {name: "Der Unsterbliche", color: green}
+    deaths-most:  {name: "Märtyrer",         color: dark_red}
+    trades:       {name: "Händler",          color: dark_green}
+    walked:       {name: "Wanderer",         color: dark_aqua}
+    bosses:       {name: "Bossbezwinger",    color: light_purple}
+    placed:       {name: "Baumeister",       color: gold}
+    mined:        {name: "Maulwurf",         color: dark_gray}
+    playtime:     {name: "Dauerzocker",      color: light_purple}
+  # Dauerhafte Titel: einmal verdient, immer behalten.
+  # type: streak (Login-Serie in Tagen), collections (fertige Kollektionen), secrets (geheime Erfolge),
+  #       quests (geschaffte Aufgaben), coins (Kontostand), playtime (Spielzeit in Minuten)
+  permanent:
+    stammgast:        {name: "Stammgast",        color: green,        icon: CLOCK,         type: streak,      value: 30}
+    sammler:          {name: "Sammler",          color: yellow,       icon: BOOKSHELF,     type: collections, value: 10}
+    geheimniskraemer: {name: "Geheimniskrämer",  color: light_purple, icon: ENDER_EYE,     type: secrets,     value: 10}
+    questmeister:     {name: "Questmeister",     color: aqua,         icon: WRITABLE_BOOK, type: quests,      value: 100}
+    goldfinger:       {name: "Goldfinger",       color: gold,         icon: GOLD_BLOCK,    type: coins,       value: 100000}
+    veteran:          {name: "Veteran",          color: red,          icon: SHIELD,        type: playtime,    value: 6000}
+
+# ---------------- Sicherungen der Datenbank ----------------
+# Eine Kopie von coinshop.db im Ordner plugins/CoinShop/backups. Beim Start, im Abstand von
+# interval-hours und beim Ausschalten. Es bleiben nur die neuesten "keep" Dateien erhalten.
+backup:
+  enabled: true
+  interval-hours: 6
+  keep: 20
+
+# ---------------- Tägliches Einkommen ----------------
+# Wird für JEDEN bekannten Spieler (auch offline) zusammen mit dem Shop-Wechsel ausgezahlt.
+# Dazu kommt das Einkommen aus Investitions-Sets. Diese Coins werden neu erzeugt (nicht vom Shop-Konto genommen).
+daily-income:
+  base: 10
+
+# ---------------- Server-Shop ----------------
+server-shop:
+  # Wie viele Angebote gleichzeitig (das Menü ist für 14 gebaut - nicht ändern)
+  offers: 14
+  # Zeitzone und Uhrzeit des täglichen Wechsels
+  timezone: "Europe/Berlin"
+  reset-hour: 12
+  # Wie oft ein Spieler EIN Angebot pro Tag kaufen darf (0 = unbegrenzt)
+  purchase-limit-per-offer: 3
+  # Wie oft ein Angebot INSGESAMT (von allen Spielern zusammen) gekauft werden kann.
+  # Sind alle 10 Angebote ausverkauft, werden sofort neue ausgelost.
+  stock-per-offer: 3
+
+  # Chance (0.0 bis 1.0), dass ein Angebotsplatz ein verzaubertes Rüstungsteil bzw. ein
+  # Verzauberungsbuch ist. Der Rest sind normale Items.
+  enchanted-armor-chance: 0.12
+  # Chance für ein bereits verzaubertes Werkzeug oder eine verzauberte Waffe (Schwert, Axt, Spitzhacke,
+  # Schaufel, Hacke, Bogen, Armbrust, Dreizack, Streitkolben, Angel)
+  enchanted-tool-chance: 0.12
+  enchanted-book-chance: 0.18
+
+  # Diese Items gibt es im Shop immer nur EINZELN (Menge 1). Mit * sind Gruppen möglich.
+  single-only:
+    - MAP
+
+  # Wie stark teure Items seltener erscheinen. Gewicht = 1 / (1 + Preis / rarity-divisor).
+  # Größerer Wert = teure Items erscheinen häufiger. Sehr großer Wert (z. B. 1000000) = alle gleich oft.
+  rarity-divisor: 1000
+
+  # Was Verzauberungen kosten (Coins PRO STUFE, bei Stufe 1). Der Name ist der Spielname der Verzauberung.
+  # Alles, was hier fehlt, kostet "default".
+  # - Hohe Stufen werden überproportional teurer (siehe enchant-level-exponent).
+  # - Ein Buch kostet nur die Verzauberung (mindestens 250). Rüstung, Werkzeuge und Waffen kosten den
+  #   Preis des Items + die Verzauberungen x den Material-Faktor (siehe enchant-material-factor).
+  # - Verzauberungen, die man NICHT am Verzauberungstisch bekommt (mending, frost_walker, soul_speed,
+  #   swift_sneak, wind_burst), sind besonders teuer.
+  enchant-level-exponent: 1.4
+  enchant-cost-per-level:
+    default: 600
+    # --- Schutz und Rüstung ---
+    protection: 1500
+    fire_protection: 900
+    blast_protection: 1250
+    projectile_protection: 900
+    feather_falling: 800
+    thorns: 1000
+    unbreaking: 1250
+    respiration: 1000
+    aqua_affinity: 2000
+    depth_strider: 1500
+    # --- Nur als Schatz (nicht am Verzauberungstisch!) - sehr teuer ---
+    mending: 6000
+    frost_walker: 8000
+    soul_speed: 9000
+    swift_sneak: 10000
+    wind_burst: 10000
+    # --- Nahkampf ---
+    sharpness: 1750
+    smite: 800
+    bane_of_arthropods: 600
+    knockback: 800
+    fire_aspect: 1500
+    looting: 2500
+    sweeping_edge: 1500
+    density: 2000
+    breach: 2500
+    # --- Werkzeuge ---
+    efficiency: 1500
+    silk_touch: 7500
+    fortune: 3000
+    # --- Fernkampf und Sonstiges ---
+    power: 1750
+    punch: 800
+    flame: 2000
+    infinity: 9000
+    luck_of_the_sea: 1500
+    lure: 1000
+    loyalty: 1000
+    impaling: 1000
+    riptide: 3000
+    channeling: 4000
+    multishot: 3500
+    quick_charge: 1500
+    piercing: 1000
+
+  # Wie stark Verzauberungen bei einem Material zählen. Gilt für verzauberte Rüstung, Werkzeuge und
+  # Waffen (nicht für Bücher). 1.0 = voller Preis, 0.25 = nur ein Viertel. Erster passender Eintrag gilt,
+  # was fehlt, zählt voll.
+  enchant-material-factor:
+    "LEATHER_*": 0.25
+    "WOODEN_*": 0.25
+    "STONE_*": 0.3
+    "GOLDEN_*": 0.35
+    "COPPER_*": 0.35
+    "CHAINMAIL_*": 0.45
+    TURTLE_HELMET: 0.45
+    "IRON_*": 0.6
+    BOW: 0.7
+    CROSSBOW: 0.7
+    FISHING_ROD: 0.5
+    "DIAMOND_*": 1.0
+    "NETHERITE_*": 1.0
+
+  # Preis pro EINZELNEM Item, wenn unten nichts passt
+  default-price: 15
+
+  # Diese Items erscheinen NIE (Dinge, die es im Survival nicht gibt oder die sinnlos wären).
+  # Mit * am Anfang/Ende kannst du Gruppen angeben, z. B. "*_SPAWN_EGG".
+  exclude:
+    - DRAGON_EGG
+    - ELYTRA
+    - "*_SPAWN_EGG"
+    - "LEGACY_*"
+    - "*COMMAND_BLOCK*"
+    - "INFESTED_*"
+    - BEDROCK
+    - BARRIER
+    - LIGHT
+    - STRUCTURE_BLOCK
+    - STRUCTURE_VOID
+    - JIGSAW
+    - DEBUG_STICK
+    - KNOWLEDGE_BOOK
+    - SPAWNER
+    - TRIAL_SPAWNER
+    - VAULT
+    - REINFORCED_DEEPSLATE
+    - END_PORTAL_FRAME
+    - BUDDING_AMETHYST
+    - FARMLAND
+    - CHORUS_PLANT
+    - FROGSPAWN
+    - PETRIFIED_OAK_SLAB
+    - PLAYER_HEAD
+    - WRITTEN_BOOK
+    - FILLED_MAP
+    - POTION
+    - SPLASH_POTION
+    - LINGERING_POTION
+    - TIPPED_ARROW
+    - SUSPICIOUS_STEW
+    - GOAT_HORN
+    - OMINOUS_BOTTLE
+    - ENCHANTED_BOOK
+    - TEST_BLOCK
+    - TEST_INSTANCE_BLOCK
+
+  # Preise pro EINZELNEM Item. Gesamtpreis = Menge x Preis (fest für den ganzen Tag).
+  # Es gilt der ERSTE passende Eintrag von oben nach unten. Genaue Namen zuerst, Gruppen (mit *) danach.
+  # Die seltensten Items kosten rund 100000 Coins - alles andere ist daran angelehnt.
+  prices:
+    # --- Die Seltensten (bis 100000 Coins) ---
+    NETHERITE_BLOCK: 100000
+    ELYTRA: 37500
+    BEACON: 30000
+    NETHER_STAR: 25000
+    DRAGON_HEAD: 22500
+    NETHERITE_INGOT: 20000
+    MACE: 17500
+    ENCHANTED_GOLDEN_APPLE: 17500
+    TOTEM_OF_UNDYING: 15000
+    HEART_OF_THE_SEA: 15000
+    WITHER_SKELETON_SKULL: 12500
+    TRIDENT: 12500
+    NETHERITE_UPGRADE_SMITHING_TEMPLATE: 10000
+    HEAVY_CORE: 10000
+    CONDUIT: 10000
+    MUSIC_DISC_PIGSTEP: 7500
+    MUSIC_DISC_OTHERSIDE: 7500
+    MUSIC_DISC_5: 7500
+    SNIFFER_EGG: 7500
+    DIAMOND_BLOCK: 7500
+    ANCIENT_DEBRIS: 6000
+    MUSIC_DISC_RELIC: 6000
+    NETHERITE_SCRAP: 5000
+    ECHO_SHARD: 5000
+    "*SHULKER_BOX": 5000
+    # --- Teuer (hunderte Coins) ---
+    "NETHERITE_*": 15000
+    EMERALD_BLOCK: 3500
+    ENCHANTING_TABLE: 3000
+    RECOVERY_COMPASS: 3000
+    "*DIAMOND_ORE": 1000
+    "DIAMOND_*": 3000
+    "*_SKULL": 3000
+    "*_HEAD": 3000
+    CREAKING_HEART: 2500
+    SCULK_SHRIEKER: 2500
+    GOLD_BLOCK: 1250
+    "*_SMITHING_TEMPLATE": 4500
+    "MUSIC_DISC_*": 2000
+    SCULK_CATALYST: 2000
+    RESPAWN_ANCHOR: 2000
+    END_CRYSTAL: 2000
+    DRAGON_BREATH: 2000
+    SHULKER_SHELL: 2000
+    ENDER_CHEST: 750
+    LODESTONE: 1500
+    SADDLE: 1500
+    NAUTILUS_SHELL: 1500
+    DISC_FRAGMENT_5: 1500
+    CALIBRATED_SCULK_SENSOR: 1500
+    NAME_TAG: 1250
+    ANVIL: 1000
+    DIAMOND: 850
+    BELL: 750
+    SCULK_SENSOR: 750
+    SPONGE: 750
+    GHAST_TEAR: 600
+    BREWING_STAND: 600
+    # Schwache Rüstung ist bewusst günstig (Leder, Kupfer, Gold, Kette, Eisen, Schildkrötenpanzer)
+    "LEATHER_HORSE_ARMOR": 75
+    "LEATHER_*": 25
+    "COPPER_HELMET": 60
+    "COPPER_CHESTPLATE": 60
+    "COPPER_LEGGINGS": 60
+    "COPPER_BOOTS": 60
+    "CHAINMAIL_*": 200
+    TURTLE_HELMET: 300
+    GOLDEN_HELMET: 100
+    GOLDEN_CHESTPLATE: 100
+    GOLDEN_LEGGINGS: 100
+    GOLDEN_BOOTS: 100
+    IRON_HELMET: 150
+    IRON_CHESTPLATE: 150
+    IRON_LEGGINGS: 150
+    IRON_BOOTS: 150
+    TURTLE_EGG: 500
+    MAP: 750
+    IRON_BLOCK: 500
+    "*EMERALD_ORE": 500
+    EMERALD: 400
+    ENDER_EYE: 400
+    TRIAL_KEY: 500
+    GOLDEN_APPLE: 300
+    GOLDEN_CARROT: 100
+    "GOLDEN_*": 300
+    CLOCK: 300
+    # --- Mittel ---
+    IRON_INGOT: 60
+    IRON_NUGGET: 10
+    IRON_ORE: 75
+    DEEPSLATE_IRON_ORE: 75
+    IRON_BARS: 20
+    "IRON_*": 200
+    GOLD_INGOT: 150
+    ENDER_PEARL: 200
+    BLAZE_ROD: 200
+    BREEZE_ROD: 200
+    EXPERIENCE_BOTTLE: 200
+    RABBIT_FOOT: 200
+    COMPASS: 200
+    CROSSBOW: 200
+    TURTLE_SCUTE: 200
+    TORCHFLOWER_SEEDS: 200
+    PHANTOM_MEMBRANE: 150
+    ARMADILLO_SCUTE: 150
+    SPORE_BLOSSOM: 150
+    CRYING_OBSIDIAN: 150
+    SHIELD: 150
+    TNT: 125
+    GLISTERING_MELON_SLICE: 125
+    OBSIDIAN: 100
+    LEAD: 100
+    BOW: 100
+    WIND_CHARGE: 100
+    SLIME_BALL: 75
+    HONEY_BOTTLE: 60
+    BOOK: 75
+    SHEARS: 75
+    FISHING_ROD: 50
+    AMETHYST_SHARD: 50
+    LAPIS_LAZULI: 40
+    COPPER_INGOT: 30
+    QUARTZ: 30
+    COAL: 25
+    REDSTONE: 25
+    GLOWSTONE_DUST: 25
+    "COOKED_*": 20
+    LEATHER: 30
+
+# ---------------- Spieler-Shop ----------------
+player-shop:
+  # Preisgrenzen (Coins) für das Gesamtangebot
+  min-price: 1
+  max-price: 1000000
+  # So lange bleibt ein Angebot online. Danach landet das Item in der "Abholung".
+  listing-duration-hours: 48
+
+  # --- Verkaufs-Slots (müssen gekauft werden) ---
+  # So viele Slots hat jeder Spieler gratis (1 = der erste Slot ist gratis)
+  free-slots: 1
+  # Preis des ersten Slots. Jeder weitere Slot kostet das Doppelte vom vorherigen
+  # (5, 10, 20, 40, 80 ...).
+  # Höchstens so viele Slots pro Spieler (Gratis-Slots mitgezählt):
+  max-slots: 32
+  slot-base-price: 5
+  slot-price-multiplier: 2
+
+  # --- Schutz gegen "Zwischenlager"-Missbrauch ---
+  # Gebühr beim Einstellen. Sie wird NICHT zurückerstattet (auch nicht beim Abbrechen
+  # oder Ablaufen). So kostet es immer Coins, den Shop als Lager zu nutzen.
+  listing-fee-percent: 5.0
+  min-listing-fee: 1
+  # Steuer beim Verkauf: wird dem Verkäufer vom Erlös abgezogen
+  sale-tax-percent: 5.0
+  # Gebühren und Steuern landen auf dem Konto des Shops (und sind im Glücksrad gewinnbar).
+
+  # Diese Items dürfen NICHT angeboten werden
+  blacklist:
+    - BEDROCK
+    - BARRIER
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+    - DEBUG_STICK
+    - LIGHT
+    - SPAWNER
+    - REINFORCED_DEEPSLATE
+
+# ---------------- Glücksrad ----------------
+# Der Einsatz geht auf das Konto des Shops. Gewinne werden vom Konto des Shops bezahlt.
+wheel:
+  # Preis pro Drehung
+  price: 10
+  # Jackpot (= das GANZE Shop-Konto): Chance 1 zu 10000
+  jackpot-odds: 10000
+  # Gewinnstufen: "odds" = Chance 1 zu X pro Drehung, "amounts" = mögliche Gewinne (einer davon, alle gleich
+  # wahrscheinlich). Bezahlt vom Shop-Konto (höchstens so viel, wie gerade darauf ist).
+  # Alles, was nicht passt, ist eine Niete. Die Chancen werden addiert (1 zu 10 + 1 zu 20 + ...).
+  tiers:
+    t1: {odds: 10,   amounts: [5]}
+    t2: {odds: 20,   amounts: [10]}
+    t3: {odds: 50,   amounts: [50]}
+    t4: {odds: 100,  amounts: [100, 200, 500]}
+    t5: {odds: 1000, amounts: [1000, 1500, 2000]}
+
+# ---------------- Casino ----------------
+# Neben dem Glücksrad (oben, "wheel") gibt es zwei weitere Spiele. Sie funktionieren genauso:
+# Der Einsatz geht aufs Shop-Konto, Gewinne zahlt das Shop-Konto. Jackpot = das GANZE Shop-Konto.
+casino:
+  # Spielautomat: drei gleiche Symbole gewinnen
+  slots:
+    price: 20
+    jackpot-odds: 10000
+    tiers:
+      t1: {odds: 10,   amounts: [10]}
+      t2: {odds: 20,   amounts: [20]}
+      t3: {odds: 50,   amounts: [60]}
+      t4: {odds: 100,  amounts: [150, 300, 600]}
+      t5: {odds: 1000, amounts: [1500, 2500]}
+  # Rubbellos: günstig, mit kleineren Gewinnen
+  scratch:
+    price: 5
+    jackpot-odds: 10000
+    tiers:
+      t1: {odds: 10,   amounts: [3]}
+      t2: {odds: 25,   amounts: [8]}
+      t3: {odds: 70,   amounts: [30]}
+      t4: {odds: 200,  amounts: [100, 150, 300]}
+      t5: {odds: 2000, amounts: [1000, 2000]}
+
+# ---------------- Börse ----------------
+# Ein Kurs für alle. Er ändert sich einmal am Tag zusammen mit dem Shop-Wechsel.
+# Man kauft Aktien mit einem beliebigen Coin-Betrag (nur ganze Aktien, Rest wird nicht abgebucht).
+# Beispiel: Kurs 2, du zahlst 10 Coins -> (ohne Gebühr) 5 Aktien. Steigt der Kurs auf 4, sind sie 20 Coins wert.
+stock:
+  # Gebühr (Ausgabeaufschlag) in Prozent, bei Kauf UND Verkauf. Sie geht aufs Shop-Konto.
+  fee-percent: 10
+  # Kurs beim allerersten Start
+  start-price: 10
+  # Der Kurs bleibt immer zwischen diesen Grenzen (höchstens 100)
+  min-price: 1
+  max-price: 100
+  # Wie stark der Kurs pro Tag schwankt (0.45 = typisch etwa +-45 %, große Sprünge sind möglich)
+  volatility: 0.45
+  # Zu diesem Kurs wird der Kurs sanft hingezogen, damit er nicht dauerhaft bei 1 oder 100 klebt
+  anchor-price: 20
+  reversion: 0.08
+  # Wie viele Tage Verlauf im Menü angezeigt werden
+  history-days: 7
+  # Die festen Kauf-Beträge im Menü (die ersten 3 werden angezeigt)
+  quick-amounts: [10, 100, 1000]
+
+# ---------------- Investitionen (Sets) ----------------
+# Jedes Item eines Sets gibt es nur EINMAL auf dem Server (wie Straßen bei Monopoly).
+# "price" = Preis pro Item = tägliches Einkommen, wenn man das KOMPLETTE Set besitzt.
+# Teilbesitz bringt einen Teil des Einkommens (siehe percent-by-owned-count).
+# Achtung: Die Namen der Einträge (set01, set02 ...) werden zum Speichern benutzt - nicht umbenennen!
+investments:
+  # Ein Item kostet (Preis des Sets) x diesen Faktor. Das Einkommen bleibt beim Set-Preis.
+  # Beispiel: Teuerstes Set = 1000 Coins Einkommen pro Tag, ein Item kostet 20 x 1000 = 20000 Coins.
+  price-multiplier: 20
+  # Wie viel Prozent des Set-Einkommens man bekommt, wenn man 1, 2 ... Items des Sets besitzt.
+  # (Das komplette Set bringt immer 100 %.)
+  percent-by-owned-count:
+    1: 10
+    2: 35
+  sets:
+    set01: {name: "Drachenhort",          price: 1000, items: [DRAGON_EGG, ELYTRA, DRAGON_HEAD]}
+    set02: {name: "Netherit-Schmiede",    price: 960,  items: [NETHERITE_INGOT, NETHERITE_UPGRADE_SMITHING_TEMPLATE, ANCIENT_DEBRIS]}
+    set03: {name: "Herz des Ozeans",      price: 925,  items: [HEART_OF_THE_SEA, TRIDENT, CONDUIT]}
+    set04: {name: "Wither-Festung",       price: 890,  items: [NETHER_STAR, WITHER_SKELETON_SKULL, BEACON]}
+    set05: {name: "Unsterblichkeit",      price: 850,  items: [TOTEM_OF_UNDYING, ENCHANTED_GOLDEN_APPLE, EXPERIENCE_BOTTLE]}
+    set06: {name: "Diamant-Mine",         price: 810,  items: [DIAMOND_BLOCK, DIAMOND_PICKAXE, DIAMOND_ORE]}
+    set07: {name: "End-Stadt",            price: 775,  items: [SHULKER_BOX, SHULKER_SHELL, END_CRYSTAL]}
+    set08: {name: "Dorfhandel",           price: 740,  items: [EMERALD_BLOCK, LECTERN, BELL]}
+    set09: {name: "Alchemisten-Labor",    price: 700,  items: [BREWING_STAND, GHAST_TEAR, BLAZE_ROD]}
+    set10: {name: "Zauberturm",           price: 660,  items: [ENCHANTING_TABLE, BOOKSHELF, LAPIS_BLOCK]}
+    set11: {name: "Tiefen-Schatz",        price: 625,  items: [ECHO_SHARD, SCULK_CATALYST, RECOVERY_COMPASS]}
+    set12: {name: "Goldrausch",           price: 590,  items: [GOLD_BLOCK, GOLDEN_APPLE, GOLDEN_CARROT]}
+    set13: {name: "Piglin-Bastion",       price: 550,  items: [GILDED_BLACKSTONE, CRYING_OBSIDIAN, RESPAWN_ANCHOR]}
+    set14: {name: "Schallplatten-Sammlung", price: 510, items: [MUSIC_DISC_PIGSTEP, MUSIC_DISC_OTHERSIDE, DISC_FRAGMENT_5]}
+    set15: {name: "Redstone-Werkstatt",   price: 475,  items: [REDSTONE_BLOCK, OBSERVER, STICKY_PISTON]}
+    set16: {name: "Bahnhof",              price: 440,  items: [POWERED_RAIL, DETECTOR_RAIL, MINECART]}
+    set17: {name: "Farm-Imperium",        price: 400,  items: [HAY_BLOCK, MELON, PUMPKIN]}
+    set18: {name: "Seefahrer",            price: 360,  items: [COMPASS, CLOCK, SPYGLASS]}
+    set19: {name: "Schmiede",             price: 325,  items: [ANVIL, GRINDSTONE, SMITHING_TABLE]}
+    set20: {name: "Hüttenwerk",           price: 290,  items: [BLAST_FURNACE, SMOKER, FURNACE]}
+    set21: {name: "Bibliothek",           price: 250,  items: [BOOK, WRITABLE_BOOK, NAME_TAG]}
+    set22: {name: "Imkerei",              price: 210,  items: [BEEHIVE, HONEY_BLOCK, HONEYCOMB]}
+    set23: {name: "Tiefsee-Angler",       price: 175,  items: [FISHING_ROD, NAUTILUS_SHELL, PUFFERFISH]}
+    set24: {name: "Holzfäller",           price: 140,  items: [IRON_AXE, OAK_LOG, CRAFTING_TABLE]}
+    set25: {name: "Steinbruch",           price: 100,  items: [STONE_PICKAXE, COBBLESTONE, TORCH]}

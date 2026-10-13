@@ -1,0 +1,934 @@
+# ============================================================
+#  CoinShop - Texte
+#  Format: MiniMessage, z. B. <gold>gold</gold>, <bold>fett</bold>, <red>rot</red>
+#  Platzhalter wie <coins> oder <player> NICHT verändern/löschen.
+#  Wichtig: Jede Zeile mit Text steht in Anführungszeichen "..."
+#  Nach Änderungen: /coinsadmin reload
+# ============================================================
+
+prefix: "<gold><bold>Coins</bold></gold> <dark_gray>»</dark_gray> <gray>"
+
+# ---------- Allgemein ----------
+only-players: "<red>Dieser Befehl ist nur für Spieler."
+no-permission: "<red>Dazu hast du keine Berechtigung."
+error: "<red>Es ist ein Fehler aufgetreten. Bitte melde das einem Admin."
+player-unknown: "<red>Der Spieler <white><player></white> ist unbekannt (er muss schon einmal auf dem Server gewesen sein)."
+invalid-amount: "<red>Bitte gib eine ganze Zahl zwischen 1 und <max> an."
+not-enough: "<red>Du hast nicht genug Coins."
+
+# ---------- Kontostand / Überweisung / Rangliste ----------
+balance-self: "Du hast <gold><coins> Coins</gold>."
+balance-other: "<white><player></white> hat <gold><coins> Coins</gold>."
+pay-usage: "<red>Benutzung: /pay [Spieler] [Betrag]"
+pay-self: "<red>Du kannst dir nicht selbst Coins überweisen."
+pay-sent: "Du hast <gold><coins> Coins</gold> an <white><player></white> überwiesen."
+pay-received: "Du hast <gold><coins> Coins</gold> von <white><player></white> erhalten."
+baltop-header: "<gold>---- Die reichsten Spieler ----"
+baltop-line: "<yellow><rank>.</yellow> <white><player></white> <dark_gray>-</dark_gray> <gold><coins> Coins</gold>"
+baltop-empty: "<gray>Noch hat niemand Coins."
+
+# ---------- Erfolge und Einkommen ----------
+achievement-reward: "<green>Erfolg geschafft!</green> <gray>[<tier>]</gray> Belohnung: <gold>+<coins> Coins</gold>"
+daily-income: "<green>Tägliches Einkommen:</green> <gold>+<coins> Coins</gold> <gray>(Mehr Einkommen gibt es unter /shop > Investitionen)"
+
+# ---------- Admin ----------
+admin-usage: "<red>Benutzung: /coinsadmin give|take|set [Spieler] [Betrag] | resetshop | reload | stats | log [Spieler] [Anzahl] | backup"
+admin-given: "<white><player></white> hat <gold><coins> Coins</gold> bekommen."
+admin-taken: "<gold><coins> Coins</gold> wurden <white><player></white> abgezogen."
+admin-set: "Kontostand von <white><player></white> auf <gold><coins> Coins</gold> gesetzt."
+admin-reload: "<green>Einstellungen und Texte neu geladen."
+admin-shop-reset: "<green>Der Shop wurde zurückgesetzt:</green> neue Angebote, neuer Börsenkurs und das tägliche Einkommen wurde ausgezahlt."
+admin-target-too-poor: "<red><player> hat nicht genug Coins."
+
+# ---------- Server-Shop (Kauf) ----------
+server-offer-outdated: "<red>Dieses Angebot gibt es nicht mehr. Das Menü wurde aktualisiert."
+server-limit-reached: "<red>Du hast dieses Angebot heute schon <limit>x gekauft."
+inventory-full: "<red>Dein Inventar ist zu voll. Mach Platz und versuch es nochmal."
+server-bought: "Du hast <white><amount>x <item></white> für <gold><coins> Coins</gold> gekauft."
+
+# ---------- Spieler-Shop ----------
+hold-item: "<red>Halte das Item, das du verkaufen willst, in der Hand."
+item-blacklisted: "<red>Dieses Item darf nicht im Spieler-Shop angeboten werden."
+price-range: "<red>Der Preis muss zwischen <min> und <max> Coins liegen."
+no-free-slot: "<red>Du hast keinen freien Verkaufs-Slot. Kaufe unter <white>/shop > Spieler-Shop > Meine Angebote</white> einen Slot (nächster Slot: <gold><price> Coins</gold>)."
+slot-too-expensive: "<red>Dir fehlen Coins: Der nächste Slot kostet <gold><price> Coins</gold>."
+slot-max: "<red>Du hast bereits die Höchstzahl von <white><max> Slots</white>."
+slot-bought-max: "<green>Slot gekauft!</green> Du hast jetzt <white><slots> Slots</white> - das ist das Maximum."
+slot-bought: "<green>Slot gekauft!</green> Du hast jetzt <white><slots> Slots</white>. Der nächste Slot kostet <gold><price> Coins</gold>."
+listing-fee-too-high: "<red>Dir fehlen Coins für die Einstellgebühr (<fee> Coins)."
+ask-price: "<yellow>Schreibe jetzt den <bold>Gesamtpreis</bold> in den Chat (<min> bis <max> Coins). Zum Abbrechen schreibe <white>abbrechen</white>."
+ask-price-info: "<gray>Angeboten wird: <white><amount>x <item></white> <dark_gray>|</dark_gray> Einstellgebühr: <gold>mind. <fee> Coins</gold> (wird nicht erstattet)"
+ask-cancelled: "<gray>Abgebrochen."
+ask-invalid: "<red>Das war keine gültige Zahl. Vorgang abgebrochen - starte neu über /shop."
+listing-created: "<green>Angebot erstellt:</green> <white><amount>x <item></white> für <gold><price> Coins</gold> <gray>(Gebühr: <fee> Coins)"
+listing-gone: "<red>Dieses Angebot gibt es nicht mehr."
+buy-own: "<red>Du kannst dein eigenes Angebot nicht kaufen. Du kannst es unter 'Meine Angebote' abbrechen."
+player-bought: "Du hast <white><amount>x <item></white> für <gold><price> Coins</gold> gekauft."
+listing-sold: "<green>Verkauft:</green> <white><amount>x <item></white> für <gold><coins> Coins</gold> <gray>(nach Steuer)"
+listing-cancelled: "<gray>Angebot abgebrochen. Das Item ist wieder bei dir."
+listing-cancelled-claim: "<gray>Angebot abgebrochen. Dein Inventar war voll - das Item liegt in der <white>Abholung</white>."
+listing-expired: "<yellow>Eines deiner Angebote ist abgelaufen. Du findest das Item unter <white>/shop > Spieler-Shop > Meine Angebote > Abholung</white>."
+claim-taken: "<gray>Du hast das Item abgeholt."
+claims-waiting: "<yellow>Du hast <count> Item(s) zur Abholung: <white>/shop > Spieler-Shop > Meine Angebote > Abholung</white>."
+
+# ---------- Glücksrad ----------
+wheel-not-enough: "<red>Dieses Spiel kostet <price> Coins - so viel hast du nicht."
+wheel-nothing: "<gray>Leider eine Niete. Dein Einsatz geht auf das Shop-Konto. Mehr Glück beim nächsten Mal!"
+wheel-win: "<green>Gewonnen!</green> Du bekommst <gold><coins> Coins</gold> vom Shop-Konto."
+wheel-win-capped: "<yellow>Gewonnen, aber das Shop-Konto war nicht voll genug.</yellow> Ausgezahlt: <gold><coins> Coins</gold>."
+wheel-jackpot: "<gold><bold>JACKPOT!</bold></gold> Du hast das ganze Shop-Konto geknackt: <gold><coins> Coins</gold>!"
+wheel-jackpot-broadcast: "<gold><bold>JACKPOT!</bold></gold> <white><player></white> hat im Casino (<game>) das gesamte Shop-Konto gewonnen: <gold><coins> Coins</gold>!"
+
+# ---------- Investitionen ----------
+invest-taken: "<red>Dieses Item gehört schon jemandem."
+invest-bought: "Du hast <white><item></white> aus dem Set <white><set></white> für <gold><price> Coins</gold> gekauft. <gray>Dein Einkommen aus diesem Set: <gold>+<income> Coins/Tag</gold>"
+invest-set-complete: "<green><bold>Set komplett!</bold></green> Du besitzt jetzt alle Items von <white><set></white> und bekommst das volle Einkommen."
+transfer-ask-target: "<yellow>An wen möchtest du <white><item></white> übertragen? Schreibe den Spielernamen in den Chat (oder <white>abbrechen</white>)."
+transfer-confirm: "<yellow>Möchtest du <white><item></white> aus dem Set <white><set></white> wirklich an <white><player></white> übertragen? Schreibe <white>ja</white> zum Bestätigen oder <white>abbrechen</white>."
+transfer-self: "<red>Du kannst nicht an dich selbst übertragen."
+transfer-done: "Du hast <white><item></white> (Set <white><set></white>) an <white><player></white> übertragen."
+transfer-received: "<white><player></white> hat dir <white><item></white> aus dem Set <white><set></white> übertragen!"
+transfer-failed: "<red>Die Übertragung ist fehlgeschlagen (das Item gehört dir nicht mehr)."
+
+server-sold-out: "<red>Dieses Angebot ist ausverkauft."
+server-shop-soldout-reset: "<aqua>Server-Shop:</aqua> Alles ausverkauft - es gibt <green>sofort neue Angebote</green>!"
+
+collection-complete: "<gold>Kollektion vollständig:</gold> <white><name></white> <gold>+<coins> Coins</gold>"
+collection-broadcast: "<gold><player></gold> hat die Kollektion <white><name></white> vervollständigt!"
+secret-unlocked: "<light_purple>Geheimer Erfolg entdeckt:</light_purple> <white><name></white> <gray>[<tier>]</gray> <gold>+<coins> Coins</gold>"
+
+# ---------- Teleport, Schlafen, Freecam ----------
+tp-usage: "<red>Benutze: <white>/tp spawn"
+tp-countdown: "<yellow>Teleport in <white><seconds></white> Sekunden ..."
+tp-done: "<green>Du wurdest teleportiert."
+tp-pending: "<red>Du wirst bereits teleportiert."
+tp-failed: "<red>Das Teleportziel ist nicht mehr verfügbar."
+tp-freecam: "<red>Beende zuerst die Freecam mit <white>/freecam</white>."
+home-set: "<green>Dein Zuhause wurde hier gesetzt.</green> Mit <white>/home</white> kommst du zurück."
+home-none: "<red>Du hast noch kein Zuhause. Setze eins mit <white>/sethome</white>."
+home-world-missing: "<red>Die Welt deines Zuhauses gibt es nicht mehr."
+tpa-usage: "<red>Benutze: <white>/tpa [Spieler]"
+tpa-self: "<red>Du kannst dich nicht zu dir selbst teleportieren."
+tpa-not-found: "<red>Diesen Spieler gibt es nicht (er muss online sein)."
+tpa-sent: "<green>Anfrage an <white><player></white> gesendet.</green> Sie gilt <seconds> Sekunden."
+tpa-received: "<white><player></white> möchte sich zu dir teleportieren. <green>/tpaccept</green> zum Annehmen, <red>/tpdeny</red> zum Ablehnen."
+tpa-none: "<red>Du hast keine offene Teleport-Anfrage."
+tpa-requester-offline: "<red>Der Spieler ist nicht mehr online."
+tpa-accepted: "<green>Du hast die Anfrage von <white><player></white> angenommen."
+tpa-accepted-sender: "<white><player></white> hat deine Anfrage <green>angenommen</green>."
+tpa-denied: "<yellow>Du hast die Anfrage von <white><player></white> abgelehnt."
+tpa-denied-sender: "<white><player></white> hat deine Anfrage <red>abgelehnt</red>."
+sleep-skip: "<aqua>Schlaf:</aqua> <white><sleeping> von <active></white> aktiven Spielern schlafen - die Nacht zieht vorbei."
+freecam-start: "<green>Freecam an.</green> Dein Körper bleibt hier stehen und ist verwundbar. Mit <white>/freecam</white> kommst du zurück."
+freecam-stop: "<green>Freecam beendet."
+freecam-disabled: "<red>Die Freecam ist ausgeschaltet."
+freecam-cannot: "<red>Du kannst die Freecam gerade nicht benutzen."
+freecam-distance: "<red>Weiter als <max> Blöcke darfst du dich nicht von deinem Körper entfernen."
+freecam-body-hit: "<red>Dein Körper wird angegriffen! <gray>(/freecam zum Zurückkehren)"
+
+search-prompt: "<yellow>Schreibe jetzt, wonach du suchst (z. B. <white>Diamant Schwert</white>), oder <white>abbrechen</white>."
+
+# ---------- Börse ----------
+stock-update-up: "<aqua>Börse:</aqua> Neuer Kurs: <gold><price> Coins</gold> <green>(▲ +<diff>)</green>"
+stock-update-down: "<aqua>Börse:</aqua> Neuer Kurs: <gold><price> Coins</gold> <red>(▼ -<diff>)</red>"
+stock-update-same: "<aqua>Börse:</aqua> Neuer Kurs: <gold><price> Coins</gold> <gray>(unverändert)</gray>"
+stock-buy-prompt: "<yellow>Schreibe jetzt, für wie viele Coins du Aktien kaufen möchtest (mindestens <min>). Kurs: <gold><price> Coins</gold>, Gebühr: <percent>%. Zum Abbrechen schreibe <white>abbrechen</white>."
+stock-sell-prompt: "<yellow>Schreibe jetzt, wie viele Aktien du verkaufen möchtest (du hast <shares>), oder <white>abbrechen</white>."
+stock-too-little: "<red>Dafür bekommst du keine ganze Aktie. Eine Aktie kostet <price> Coins plus <percent>% Gebühr - zahle mindestens <min> Coins."
+stock-bought: "Du hast <white><shares> Aktien</white> zum Kurs von <gold><price> Coins</gold> gekauft. <gray>Gezahlt: <gold><paid> Coins</gold> (davon <fee> Gebühr)"
+stock-sold: "Du hast <white><shares> Aktien</white> zum Kurs von <gold><price> Coins</gold> verkauft und <gold><coins> Coins</gold> erhalten. <gray>(Gebühr: <fee> Coins)"
+stock-no-shares: "<red>Du besitzt keine Aktien."
+stock-not-enough-shares: "<red>So viele Aktien hast du nicht (du hast <shares>)."
+
+# ---------- Menüs ----------
+gui:
+  filler-name: " "
+  back-name: "<!italic><red>Zurück"
+  close-name: "<!italic><red>Schließen"
+  balance-name: "<!italic><gold>Dein Kontostand"
+  balance-lore:
+    - "<!italic><white><coins> Coins"
+    - ""
+    - "<!italic><yellow>Klicke für dein tägliches Einkommen"
+
+  main:
+    profile-name: "<!italic><aqua><bold>Mein Profil"
+    profile-lore:
+      - "<!italic><gray>Deine Statistiken, Titel, Erfolge"
+      - "<!italic><gray>und Platzierungen auf einen Blick."
+      - "<!italic><dark_gray>Anderes Profil: /profil Name"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    title-name: "<!italic><gold><bold>Titel"
+    title-lore:
+      - "<!italic><gray>Wähle den Titel, der in Chat und"
+      - "<!italic><gray>Tab-Liste vor deinem Namen steht."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    quest-name: "<!italic><green><bold>Tägliche Aufgaben"
+    quest-lore:
+      - "<!italic><gray>Jeden Tag neue Aufgaben mit Belohnung"
+      - "<!italic><gray>und deine Login-Serie."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    title: "Shop"
+    server-name: "<!italic><gold><bold>Server-Shop"
+    server-lore:
+      - "<!italic><gray>14 Angebote, jeden Tag um <white><hour>:00 Uhr</white> neu."
+      - "<!italic><gray>Feste Preise, auch verzauberte"
+      - "<!italic><gray>Rüstung und Bücher."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    player-name: "<!italic><green><bold>Spieler-Shop"
+    player-lore:
+      - "<!italic><gray>Kaufe Items von anderen Spielern"
+      - "<!italic><gray>oder biete selbst etwas an."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    casino-name: "<!italic><light_purple><bold>Casino"
+    casino-lore:
+      - "<!italic><gray>Glücksrad, Spielautomat und Rubbellos."
+      - "<!italic><gray>Gewinne zahlt das Konto des Shops."
+      - "<!italic><gray>Hauptgewinn: das ganze Shop-Konto!"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    wheel-name: "<!italic><light_purple><bold>Glücksrad"
+    wheel-lore:
+      - "<!italic><gray>Drehe für <gold><price> Coins</gold> und gewinne"
+      - "<!italic><gray>Coins aus dem Konto des Shops."
+      - "<!italic><gray>Jackpot (ganzes Konto): <white>1 zu <odds>"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    invest-name: "<!italic><aqua><bold>Investitionen"
+    invest-lore:
+      - "<!italic><gray>Item-Sets, Börse und dein"
+      - "<!italic><gray>tägliches Einkommen."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    rank-name: "<!italic><yellow><bold>Ranglisten"
+    rank-lore:
+      - "<!italic><gray>Wer hat am meisten abgebaut, gefischt,"
+      - "<!italic><gray>gekämpft oder ist am weitesten gelaufen?"
+      - "<!italic><gray>Die Top 5 bekommen mehr tägliches Einkommen."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    collection-name: "<!italic><green><bold>Kollektionen"
+    collection-lore:
+      - "<!italic><gray>Sammle alle Items einer Reihe, z. B."
+      - "<!italic><gray>alle Schallplatten, und erhalte eine"
+      - "<!italic><gray>Belohnung."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    secret-name: "<!italic><dark_purple><bold>Geheime Erfolge"
+    secret-lore:
+      - "<!italic><gray>Verborgene Erfolge mit Coin-Belohnung."
+      - "<!italic><gray>Du siehst sie erst, wenn du sie errungen hast."
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    shop-account-name: "<!italic><gold><bold>Konto des Shops"
+    shop-account-lore:
+      - "<!italic><white><coins> Coins"
+      - ""
+      - "<!italic><gray>Alle Einnahmen des Shops landen hier"
+      - "<!italic><gray>und sind im Glücksrad gewinnbar."
+
+  server:
+    title: "Server-Shop"
+    stock-line: "<!italic><gray>Noch verfügbar: <white><left>/<total>"
+    sold-out-line: "<!italic><red><bold>AUSVERKAUFT"
+    timer-name: "<!italic><aqua>Neue Angebote in"
+    timer-lore:
+      - "<!italic><white><time>"
+    empty-name: "<!italic><red>Keine Angebote verfügbar"
+    offer-lore:
+      - ""
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><gray>Heute gekauft: <white><bought>/<limit>"
+      - ""
+      - "<!italic><yellow>Linksklick zum Kaufen"
+    offer-lore-unlimited:
+      - ""
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - ""
+      - "<!italic><yellow>Linksklick zum Kaufen"
+
+  player:
+    title: "Spieler-Shop (Seite <page>)"
+    listing-lore:
+      - ""
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><gray>Verkäufer: <white><seller>"
+      - "<!italic><gray>Läuft ab in: <white><time>"
+      - ""
+      - "<!italic><yellow>Linksklick zum Kaufen"
+    own-listing-lore:
+      - ""
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><green>Das ist dein Angebot"
+      - "<!italic><gray>(Abbrechen unter 'Meine Angebote')"
+    search-name: "<!italic><aqua><bold>Suche"
+    search-lore:
+      - "<!italic><gray>Suche nach einem Item, z. B."
+      - "<!italic><gray>\"Diamant\" oder \"sword\"."
+      - ""
+      - "<!italic><yellow>Linksklick: Suchbegriff eingeben"
+    search-lore-active:
+      - "<!italic><gray>Suche: <white><term>"
+      - ""
+      - "<!italic><yellow>Linksklick: neue Suche"
+      - "<!italic><yellow>Rechtsklick: Suche löschen"
+    prev-name: "<!italic><yellow>Vorherige Seite"
+    next-name: "<!italic><yellow>Nächste Seite"
+    mine-name: "<!italic><aqua>Meine Angebote"
+    mine-lore:
+      - "<!italic><gray>Deine Angebote ansehen,"
+      - "<!italic><gray>Slots kaufen und Abholung."
+    sell-name: "<!italic><green><bold>Item anbieten"
+    sell-lore:
+      - "<!italic><gray>1. Item in die Hand nehmen"
+      - "<!italic><gray>2. Hier klicken"
+      - "<!italic><gray>3. Gesamtpreis in den Chat schreiben"
+      - ""
+      - "<!italic><gray>Einstellgebühr: <white><fee_percent>%</white> (mind. <min_fee> Coins)"
+      - "<!italic><gray>Verkaufssteuer: <white><tax_percent>%"
+      - "<!italic><gray>Du brauchst einen freien Slot"
+      - "<!italic><dark_gray>Alternativ: /shop sell [Preis]"
+    empty-name: "<!italic><gray>Noch keine Angebote"
+
+  mine:
+    title: "Meine Angebote (Seite <page>)"
+    listing-lore:
+      - ""
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><gray>Läuft ab in: <white><time>"
+      - ""
+      - "<!italic><red>Linksklick: Angebot abbrechen"
+      - "<!italic><dark_gray>(Gebühr wird nicht erstattet)"
+    slots-name: "<!italic><green><bold>Slot kaufen"
+    slots-lore:
+      - "<!italic><gray>Belegt: <white><used>/<total> Slots"
+      - "<!italic><gray>Nächster Slot: <gold><price> Coins"
+      - "<!italic><dark_gray>Jeder weitere Slot kostet das Doppelte (maximal 32 Slots)."
+      - ""
+      - "<!italic><yellow>Klicke zum Kaufen"
+    slots-lore-max:
+      - "<!italic><gray>Belegt: <white><used>/<total> Slots"
+      - "<!italic><gold>Du hast die Höchstzahl an Slots erreicht."
+    claims-name: "<!italic><gold>Abholung"
+    claims-lore:
+      - "<!italic><white><count> Item(s) warten"
+      - "<!italic><gray>Abgelaufene oder abgebrochene"
+      - "<!italic><gray>Angebote landen hier."
+    empty-name: "<!italic><gray>Du hast keine aktiven Angebote"
+
+  claims:
+    title: "Abholung"
+    lore:
+      - ""
+      - "<!italic><gray>Grund: <white><reason>"
+      - ""
+      - "<!italic><yellow>Linksklick zum Abholen"
+    reason-expired: "Angebot abgelaufen"
+    reason-cancelled: "Angebot abgebrochen"
+    empty-name: "<!italic><gray>Nichts zum Abholen"
+
+  casino:
+    title: "Casino"
+    game-wheel: "Glücksrad"
+    game-slots: "Spielautomat"
+    game-scratch: "Rubbellos"
+    wheel-name: "<!italic><light_purple><bold>Glücksrad"
+    wheel-lore:
+      - "<!italic><gray>Drehe am Rad und hoffe auf den Jackpot."
+      - ""
+      - "<!italic><gray>Einsatz: <gold><price> Coins"
+      - "<!italic><gray>Jackpot: <white>1 zu <odds>"
+      - ""
+      - "<!italic><yellow>Klicke zum Spielen"
+    slots-name: "<!italic><aqua><bold>Spielautomat"
+    slots-lore:
+      - "<!italic><gray>Drei gleiche Symbole gewinnen."
+      - "<!italic><gray>Drei Nether-Sterne sind der Jackpot."
+      - ""
+      - "<!italic><gray>Einsatz: <gold><price> Coins"
+      - "<!italic><gray>Jackpot: <white>1 zu <odds>"
+      - ""
+      - "<!italic><yellow>Klicke zum Spielen"
+    scratch-name: "<!italic><green><bold>Rubbellos"
+    scratch-lore:
+      - "<!italic><gray>Decke sechs Felder auf."
+      - "<!italic><gray>Dreimal das gleiche Symbol gewinnt."
+      - ""
+      - "<!italic><gray>Einsatz: <gold><price> Coins"
+      - "<!italic><gray>Jackpot: <white>1 zu <odds>"
+      - ""
+      - "<!italic><yellow>Klicke zum Spielen"
+
+  slots:
+    title: "Spielautomat"
+    pointer-name: "<!italic><yellow><bold>Ergebnis"
+    reel-name: "<!italic><white><bold>?"
+    spin-name: "<!italic><green><bold>Hebel ziehen!"
+    spin-lore:
+      - "<!italic><gray>Einsatz: <gold><price> Coins"
+      - "<!italic><gray>Geht auf das Konto des Shops."
+      - ""
+      - "<!italic><yellow>Klicke zum Spielen"
+
+  scratch:
+    title: "Rubbellos"
+    field-name: "<!italic><gray><bold>Rubbelfeld"
+    field-lore:
+      - "<!italic><yellow>Klicke zum Aufrubbeln"
+    field-lore-locked:
+      - "<!italic><gray>Kaufe zuerst ein Los."
+    buy-name: "<!italic><green><bold>Los kaufen"
+    buy-lore:
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><gray>Geht auf das Konto des Shops."
+      - ""
+      - "<!italic><yellow>Klicke zum Kaufen"
+    all-name: "<!italic><gold><bold>Alles aufdecken"
+    all-lore:
+      - "<!italic><gray>Deckt alle Felder auf einmal auf."
+
+  wheel:
+    title: "Glücksrad"
+    pointer-name: "<!italic><yellow><bold>Gewinnfeld"
+    spin-name: "<!italic><green><bold>Drehen!"
+    spin-lore:
+      - "<!italic><gray>Einsatz: <gold><price> Coins"
+      - "<!italic><gray>Geht auf das Konto des Shops."
+      - ""
+      - "<!italic><yellow>Klicke zum Drehen"
+    account-name: "<!italic><gold><bold>Konto des Shops"
+    account-lore:
+      - "<!italic><white><coins> Coins"
+      - "<!italic><gray>Das ist der Jackpot!"
+    table-name: "<!italic><aqua>Gewinnchancen"
+    table-line: "<!italic><gray><label>: <white><chance>%"
+    table-tier: "<!italic><gray>1 zu <odds>: <white><amounts> Coins"
+    table-jackpot: "<!italic><light_purple>Jackpot (ganzes Konto): <white>1 zu <odds>"
+    seg-nothing: "<!italic><gray>Niete"
+    seg-coins: "<!italic><gold>+<coins> Coins"
+    seg-jackpot: "<!italic><light_purple><bold>JACKPOT: <coins> Coins"
+
+  invest:
+    title: "Item-Sets"
+    hub-title: "Investitionen"
+    hub-sets-name: "<!italic><gold><bold>Item-Sets"
+    hub-sets-lore:
+      - "<!italic><gray>Kaufe einzelne Items aus Sets. Jedes Item"
+      - "<!italic><gray>bringt dir Tag für Tag Einkommen."
+      - ""
+      - "<!italic><gray>Deine Items: <white><owned>/<total>"
+      - "<!italic><gray>Einkommen daraus: <gold>+<income> Coins/Tag"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    hub-stock-name: "<!italic><green><bold>Börse"
+    hub-stock-lore:
+      - "<!italic><gray>Kaufe Aktien und verkaufe sie wieder."
+      - "<!italic><gray>Der Kurs ändert sich jeden Tag."
+      - ""
+      - "<!italic><gray>Aktueller Kurs: <gold><price> Coins"
+      - "<!italic><gray>Deine Aktien: <white><shares>"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+    hub-income-name: "<!italic><aqua><bold>Einkommen"
+    hub-income-lore:
+      - "<!italic><gray>Grundeinkommen: <white><base> Coins"
+      - "<!italic><gray>Login-Serie: <white><login> Coins"
+      - "<!italic><gray>Aus Sets: <white><sets> Coins"
+      - "<!italic><gray>Aus Ranglisten: <white><rank> Coins"
+      - "<!italic><gray>Gesamt: <gold><total> Coins/Tag"
+      - ""
+      - "<!italic><dark_gray>Auszahlung täglich um <hour>:00 Uhr"
+      - ""
+      - "<!italic><yellow>Klicke für die Übersicht aller Spieler"
+    set-title: "Set: <set>"
+    set-name: "<!italic><gold><bold><set>"
+    set-lore-head:
+      - ""
+      - "<!italic><gray>Preis pro Item: <gold><price> Coins"
+      - "<!italic><gray>Einkommen (Set komplett): <gold>+<income> Coins/Tag"
+      - "<!italic><gray>Dein Besitz: <white><owned>/<total></white> <gray>= <yellow>+<yours> Coins/Tag"
+      - ""
+    item-line-free: "<!italic><gray>- <item><gray>: <green>frei"
+    item-line-owned: "<!italic><gray>- <item><gray>: <white><owner>"
+    item-line-mine: "<!italic><gray>- <item><gray>: <green><owner> (du)"
+    set-lore-foot:
+      - ""
+      - "<!italic><yellow>Klicke für Details"
+    income-name: "<!italic><gold><bold>Dein tägliches Einkommen"
+    income-lore:
+      - "<!italic><gray>Grundeinkommen: <white><base> Coins"
+      - "<!italic><gray>Login-Serie: <white><login> Coins"
+      - "<!italic><gray>Aus Sets: <white><sets> Coins"
+      - "<!italic><gray>Aus Ranglisten: <white><rank> Coins"
+      - "<!italic><gray>Gesamt: <gold><total> Coins/Tag"
+      - ""
+      - "<!italic><dark_gray>Auszahlung täglich um <hour>:00 Uhr"
+      - ""
+      - "<!italic><yellow>Klicke für die Übersicht aller Spieler"
+    item-lore-free:
+      - ""
+      - "<!italic><gray>Set: <white><set>"
+      - "<!italic><gray>Preis: <gold><price> Coins"
+      - "<!italic><gray>Besitzer: <green>frei"
+      - ""
+      - "<!italic><yellow>Linksklick zum Kaufen"
+    item-lore-mine:
+      - ""
+      - "<!italic><gray>Set: <white><set>"
+      - "<!italic><gray>Besitzer: <green>du"
+      - ""
+      - "<!italic><yellow>Linksklick: an einen Spieler übertragen"
+    item-lore-other:
+      - ""
+      - "<!italic><gray>Set: <white><set>"
+      - "<!italic><gray>Besitzer: <white><owner>"
+    stock-name: "<!italic><green><bold>Börse"
+    stock-lore:
+      - "<!italic><gray>Kaufe Aktien und verdiene (oder"
+      - "<!italic><gray>verliere) je nach Börsenkurs."
+      - ""
+      - "<!italic><gray>Aktueller Kurs: <gold><price> Coins"
+      - ""
+      - "<!italic><yellow>Klicke zum Öffnen"
+
+  stock:
+    title: "Börse"
+    price-name: "<!italic><gold><bold>Aktueller Kurs: <price> Coins"
+    change-up: "<!italic><green>▲ +<diff> Coins seit gestern (+<percent>%)"
+    change-down: "<!italic><red>▼ -<diff> Coins seit gestern (-<percent>%)"
+    change-same: "<!italic><gray>Unverändert seit gestern"
+    history-line: "<!italic><gray>Verlauf: <white><history>"
+    price-lore-foot:
+      - ""
+      - "<!italic><gray>Der Kurs liegt zwischen <white><min></white> und <white><max> Coins</white>."
+      - "<!italic><gray>Neuer Kurs täglich um <white><hour>:00 Uhr</white>."
+      - "<!italic><gray>Gebühr bei Kauf und Verkauf: <white><percent>%"
+    buy-name: "<!italic><green><bold>Kaufen für <coins> Coins"
+    buy-lore:
+      - "<!italic><gray>Du bekommst: <white><shares> Aktien"
+      - "<!italic><gray>Gebühr: <white><fee> Coins"
+      - "<!italic><gray>Du zahlst: <gold><paid> Coins"
+      - ""
+      - "<!italic><yellow>Klicke zum Kaufen"
+    buy-lore-too-little:
+      - "<!italic><red>Dafür gibt es keine ganze Aktie."
+      - "<!italic><gray>Mindestens <white><min> Coins</white>."
+    buy-custom-name: "<!italic><green><bold>Kaufen: eigener Betrag"
+    buy-custom-lore:
+      - "<!italic><gray>Schreibe den Betrag in den Chat."
+      - "<!italic><gray>Mindestens <white><min> Coins</white>."
+      - ""
+      - "<!italic><yellow>Klicke zum Eingeben"
+    sell-all-name: "<!italic><red><bold>Alles verkaufen"
+    sell-all-lore:
+      - "<!italic><gray>Aktien: <white><shares>"
+      - "<!italic><gray>Wert: <white><gross> Coins"
+      - "<!italic><gray>Gebühr: <white><fee> Coins"
+      - "<!italic><gray>Du bekommst: <gold><payout> Coins"
+      - ""
+      - "<!italic><yellow>Klicke zum Verkaufen"
+    sell-all-lore-empty:
+      - "<!italic><gray>Du besitzt keine Aktien."
+    sell-custom-name: "<!italic><red><bold>Verkaufen: eigene Anzahl"
+    sell-custom-lore:
+      - "<!italic><gray>Schreibe die Anzahl der Aktien"
+      - "<!italic><gray>in den Chat."
+      - ""
+      - "<!italic><yellow>Klicke zum Eingeben"
+    depot-name: "<!italic><aqua><bold>Dein Depot"
+    depot-empty:
+      - "<!italic><gray>Du besitzt keine Aktien."
+    depot-lore:
+      - "<!italic><gray>Aktien: <white><shares>"
+      - "<!italic><gray>Eingekauft für: <white><invested> Coins"
+      - "<!italic><gray>Wert jetzt: <white><gross> Coins"
+      - "<!italic><gray>Verkaufserlös (nach Gebühr): <gold><payout> Coins"
+    depot-profit: "<!italic><green>Kursgewinn: +<diff> Coins (vor Gebühr)"
+    depot-loss: "<!italic><red>Kursverlust: -<diff> Coins (vor Gebühr)"
+    depot-even: "<!italic><gray>Kein Kursgewinn oder -verlust"
+
+  rank:
+    title: "Ranglisten"
+    detail-title: "Rangliste: <name>"
+    cat-name: "<!italic><gold><bold><name>"
+    bonus-line: "<!italic><gray>Tagesbonus für Platz 1-5: <white><list> Coins <dark_gray>(bei Gleichstand geteilt)"
+    your-place: "<!italic><aqua>Dein Platz: <white><place>"
+    not-listed: "<!italic><gray>Du bist noch nicht in der Liste."
+    click: "<!italic><yellow>Klicke für die Top 10"
+    empty: "<!italic><gray>Noch keine Einträge."
+    entry-name: "<!italic><gold>Platz <place>: <white><name>"
+    entry-value: "<!italic><gray>Wert: <white><value> <unit>"
+    entry-bonus-shared: "<!italic><gray>Bonus (geteilt mit <tied> Spielern): <gold>+<bonus> Coins pro Tag"
+    entry-bonus: "<!italic><gray>Bonus: <gold>+<bonus> Coins pro Tag"
+    own-lore: "<!italic><aqua>Du: Platz <place> <gray>(<value> <unit>)"
+    bonus-total-name: "<!italic><gold><bold>Dein Ranglisten-Bonus"
+    bonus-total-lore:
+      - "<!italic><gray>Zusätzliches Einkommen pro Tag: <gold>+<coins> Coins"
+      - ""
+    bonus-total-line: "<!italic><gray><name>: Platz <white><place> <gold>(+<bonus>)"
+    cat:
+      diamonds:
+        name: "Diamanterze"
+        unit: "Erze"
+        desc:
+          - "<!italic><gray>Wer hat die meisten Diamanterze abgebaut?"
+      debris:
+        name: "Antiker Schutt"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer hat den meisten Antiken Schutt abgebaut?"
+      wood:
+        name: "Holz"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer hat das meiste Holz abgebaut? (alle Holzarten)"
+      stone:
+        name: "Stein"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer hat die meisten Steine abgebaut? (alle Steinarten)"
+      fishing:
+        name: "Angeln"
+        unit: "Fänge"
+        desc:
+          - "<!italic><gray>Wer hat am meisten gefischt?"
+      creatures:
+        name: "Kreaturen-Jäger"
+        unit: "Kreaturen"
+        desc:
+          - "<!italic><gray>Wer hat die meisten Kreaturen getötet?"
+          - "<!italic><gray>(alle Tiere, Monster und Dorfbewohner)"
+      deaths-least:
+        name: "Wenigste Tode"
+        unit: "Tode"
+        desc:
+          - "<!italic><gray>Wer ist am seltensten gestorben?"
+          - "<!italic><gray>(Nur Spieler mit genug Spielzeit zählen.)"
+      deaths-most:
+        name: "Meiste Tode"
+        unit: "Tode"
+        desc:
+          - "<!italic><gray>Wer ist am häufigsten gestorben?"
+      trades:
+        name: "Villager-Handel"
+        unit: "Handel"
+        desc:
+          - "<!italic><gray>Wer hat am meisten mit Villagern gehandelt?"
+      walked:
+        name: "Wanderer"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer ist die meisten Blöcke gewandert?"
+      bosses:
+        name: "Boss-Bezwinger"
+        unit: "Bosse"
+        desc:
+          - "<!italic><gray>Wer hat die meisten Bosse besiegt?"
+          - "<!italic><gray>(Warden, Enderdrache, Elder Guardian, Wither)"
+      mined:
+        name: "Alle abgebauten Blöcke"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer hat insgesamt die meisten Blöcke abgebaut?"
+      playtime:
+        name: "Spielzeit"
+        unit: "Minuten"
+        desc:
+          - "<!italic><gray>Wer hat am längsten auf dem Server gespielt?"
+      placed:
+        name: "Baumeister"
+        unit: "Blöcke"
+        desc:
+          - "<!italic><gray>Wer hat die meisten Blöcke platziert?"
+
+  secret:
+    title: "Geheime Erfolge"
+    summary-name: "<!italic><light_purple><bold>Entdeckt"
+    summary-lore:
+      - "<!italic><white><found> von <total> <gray>geheimen Erfolgen"
+      - "<!italic><gray>Alle anderen bleiben geheim, bis du"
+      - "<!italic><gray>sie errungen hast."
+    locked-name: "<!italic><dark_gray><bold>???"
+    locked-lore:
+      - "<!italic><gray>Ein geheimer Erfolg."
+      - "<!italic><gray>Finde heraus, wie man ihn schafft!"
+    unlocked-name: "<!italic><light_purple><bold><name>"
+    unlocked-lore:
+      - "<!italic><gray>Stufe: <white><tier>"
+      - "<!italic><gray>Belohnung: <gold>+<coins> Coins"
+      - "<!italic><dark_gray>Errungen am <date>"
+
+  collection:
+    title: "Kollektionen"
+    detail-title: "Kollektion: <name>"
+    name: "<!italic><green><bold><name>"
+    lore:
+      - "<!italic><gray>Gesammelt: <white><have>/<total>"
+      - "<!italic><gray>Belohnung: <gold><coins> Coins"
+    done: "<!italic><green>Abgeschlossen - Belohnung erhalten"
+    open: "<!italic><yellow>Klicke, um die Items zu sehen"
+    item-have: "<!italic><green>Gesammelt"
+    item-missing: "<!italic><red>Noch nicht gesammelt"
+    entity-missing: "<!italic><red>Noch nicht getötet oder durch ein Fernglas gesehen"
+
+  income:
+    title: "Einkommens-Übersicht"
+    entry-name: "<!italic><gold>Platz <place>: <white><name>"
+    entry-lore:
+      - "<!italic><gray>Einkommen: <gold><total> Coins/Tag"
+      - "<!italic><gray>  Grundeinkommen: <white><base>"
+      - "<!italic><gray>  Login-Serie: <white><login>"
+      - "<!italic><gray>  Sets: <white><sets>"
+      - "<!italic><gray>  Ranglisten: <white><rank>"
+      - "<!italic><gray>Kontostand: <white><coins> Coins"
+      - ""
+      - "<!italic><yellow>Klicke für das Profil"
+    own-name: "<!italic><aqua><bold>Dein Einkommen"
+    own-lore:
+      - "<!italic><gray>Gesamt: <gold><total> Coins/Tag"
+      - "<!italic><gray>  Grundeinkommen: <white><base>"
+      - "<!italic><gray>  Login-Serie: <white><login>"
+      - "<!italic><gray>  Sets: <white><sets>"
+      - "<!italic><gray>  Ranglisten: <white><rank>"
+      - "<!italic><dark_gray>Auszahlung täglich um <hour>:00 Uhr"
+    richest-name: "<!italic><gold><bold>Reichster Spieler"
+    richest-lore:
+      - "<!italic><white><name>"
+      - "<!italic><gray>Kontostand: <gold><coins> Coins"
+
+  myincome:
+    title: "Dein tägliches Einkommen"
+    base-name: "<!italic><gold><bold>Grundeinkommen"
+    base-lore:
+      - "<!italic><green>+<coins> Coins <gray>pro Tag"
+    login-name: "<!italic><gold><bold>Login-Serie"
+    login-lore:
+      - "<!italic><gray>Aktuelle Serie: <white><days> Tage"
+      - "<!italic><green>+<coins> Coins <gray>pro Tag"
+    set-name: "<!italic><yellow><bold><name>"
+    set-lore:
+      - "<!italic><gray>Besitz: <white><owned>/<total> Items"
+      - "<!italic><green>+<coins> Coins <gray>pro Tag"
+    rank-name: "<!italic><yellow><bold>Rangliste: <name>"
+    rank-lore:
+      - "<!italic><gray>Dein Platz: <white><place>"
+      - "<!italic><green>+<coins> Coins <gray>pro Tag"
+    total-name: "<!italic><green><bold>Gesamt"
+    total-lore:
+      - "<!italic><green>+<coins> Coins <gray>pro Tag"
+      - "<!italic><dark_gray>Auszahlung täglich um <hour>:00 Uhr"
+
+  profile:
+    title: "Profil: <name>"
+    online: "<green>online"
+    offline: "<gray>offline"
+    head-name: "<!italic><gold><bold><name>"
+    head-lore:
+      - "<!italic><gray>Status: <status>"
+      - "<!italic><gray>Kontostand: <gold><coins> Coins"
+      - "<!italic><gray>Reichsten-Liste: <white>Platz <place> von <players>"
+    title-name: "<!italic><yellow><bold>Titel"
+    title-lore:
+      - "<!italic><gray>Trägt: <current>"
+      - "<!italic><gray>Freigeschaltet: <white><have>/<total>"
+    playtime-name: "<!italic><aqua><bold>Spielzeit"
+    playtime-lore:
+      - "<!italic><white><time>"
+    streak-name: "<!italic><gold><bold>Login-Serie"
+    streak-lore:
+      - "<!italic><gray>Aktuell: <white><streak> Tage"
+      - "<!italic><gray>Rekord: <white><best> Tage"
+    income-name: "<!italic><green><bold>Tägliches Einkommen"
+    income-lore:
+      - "<!italic><gray>Gesamt: <gold><total> Coins/Tag"
+      - "<!italic><gray>  Grundeinkommen: <white><base>"
+      - "<!italic><gray>  Login-Serie: <white><login>"
+      - "<!italic><gray>  Sets: <white><sets>"
+      - "<!italic><gray>  Ranglisten: <white><rank>"
+    secret-name: "<!italic><light_purple><bold>Geheime Erfolge"
+    secret-lore:
+      - "<!italic><white><have> von <total>"
+    collection-name: "<!italic><green><bold>Kollektionen"
+    collection-lore:
+      - "<!italic><white><have> von <total> <gray>abgeschlossen"
+    quest-name: "<!italic><aqua><bold>Tägliche Aufgaben"
+    quest-lore:
+      - "<!italic><white><done> <gray>geschafft"
+    stat-lore:
+      - "<!italic><gray>Gesamt: <white><value> <unit>"
+    stat:
+      mined:
+        name: "<!italic><aqua><bold>Abgebaut"
+        unit: "Blöcke"
+      placed:
+        name: "<!italic><aqua><bold>Platziert"
+        unit: "Blöcke"
+      walked:
+        name: "<!italic><aqua><bold>Gewandert"
+        unit: "Blöcke"
+      creatures:
+        name: "<!italic><aqua><bold>Kreaturen getötet"
+        unit: "Kreaturen"
+      bosses:
+        name: "<!italic><aqua><bold>Bosse besiegt"
+        unit: "Bosse"
+      fishing:
+        name: "<!italic><aqua><bold>Geangelt"
+        unit: "Fänge"
+      trades:
+        name: "<!italic><aqua><bold>Dorfbewohner-Handel"
+        unit: "Handel"
+    deaths-name: "<!italic><red><bold>Tode"
+    deaths-lore:
+      - "<!italic><white><value>"
+    ranks-name: "<!italic><gold><bold>Ranglisten-Platzierungen"
+    ranks-none:
+      - "<!italic><gray>Noch in keiner Rangliste unter den Top 10."
+    rank-line: "<!italic><gray>Platz <white><place></white> - <white><name>"
+    invest-name: "<!italic><gold><bold>Investitionen"
+    invest-lore:
+      - "<!italic><gray>Items aus Sets: <white><have>/<total>"
+
+  quest:
+    title: "Tägliche Aufgaben"
+    disabled: "<!italic><red>Tägliche Aufgaben sind ausgeschaltet."
+    streak-name: "<!italic><gold><bold>Login-Serie"
+    streak-lore:
+      - "<!italic><gray>Aktuelle Serie: <white><streak> Tage"
+      - "<!italic><gray>Rekord: <white><best> Tage"
+      - "<!italic><gray>Serien-Bonus im Tageseinkommen: <gold>+<bonus> Coins"
+      - "<!italic><gray>Am nächsten Tag der Serie: <gold>+<next> Coins"
+      - ""
+      - "<!italic><dark_gray>Komm jeden Tag, um die Serie zu halten."
+      - "<!italic><dark_gray>Ausgezahlt wird sie mit dem Einkommen."
+    name: "<!italic><aqua><bold><name>"
+    lore:
+      - "<!italic><gray>Ziel: <white><goal>"
+      - "<!italic><gray>Belohnung: <gold>+<reward> Coins"
+      - ""
+      - "<!italic><white><have>/<need>  <bar>"
+    done: "<!italic><green>Geschafft!"
+    open: "<!italic><yellow>Noch offen"
+    bonus-name: "<!italic><light_purple><bold>Tages-Bonus"
+    bonus-lore:
+      - "<!italic><gray>Geschafft: <white><done>/<total>"
+      - "<!italic><gray>Alle Aufgaben des Tages: <gold>+<bonus> Coins"
+      - ""
+      - "<!italic><dark_gray>Neue Aufgaben in <time>"
+
+  title:
+    title: "Titel"
+    summary-name: "<!italic><gold><bold>Deine Titel"
+    summary-lore:
+      - "<!italic><gray>Freigeschaltet: <white><have>/<total>"
+      - "<!italic><gray>Du trägst: <current>"
+      - ""
+      - "<!italic><dark_gray>Du kannst mehrere Titel besitzen, trägst"
+      - "<!italic><dark_gray>aber immer nur einen. Klicke einen an."
+    active: "<!italic><green>Wird getragen"
+    click-to-wear: "<!italic><yellow>Klicke, um ihn zu tragen"
+    locked: "<!italic><red>Noch nicht freigeschaltet"
+    locked-name: "<!italic><gray>Gesperrt: <title>"
+    holder: "<!italic><gray>Aktuell: <white><player>"
+    holder-none: "<!italic><gray>Aktuell: <dark_gray>niemand"
+    auto-name: "<!italic><aqua><bold>Automatisch"
+    auto-lore:
+      - "<!italic><gray>Du trägst immer deinen wichtigsten"
+      - "<!italic><gray>Titel (Reihenfolge wie in diesem Menü)."
+      - ""
+      - "<!italic><yellow>Klicke zum Auswählen"
+    auto-lore-active:
+      - "<!italic><gray>Du trägst immer deinen wichtigsten"
+      - "<!italic><gray>Titel (Reihenfolge wie in diesem Menü)."
+      - ""
+      - "<!italic><green>Ausgewählt"
+    none-name: "<!italic><red><bold>Kein Titel"
+    none-lore:
+      - "<!italic><gray>Du trägst keinen Titel."
+      - ""
+      - "<!italic><yellow>Klicke zum Auswählen"
+    none-lore-active:
+      - "<!italic><gray>Du trägst keinen Titel."
+      - ""
+      - "<!italic><green>Ausgewählt"
+
+# ---------- Neu in Version 7 ----------
+welcome-bonus: "<green>Willkommen! Als Startbonus bekommst du <gold><coins> Coins</gold>."
+login-streak: "<green>Login-Serie: <white>Tag <days></white>! <gray>Dein Serien-Bonus im Tageseinkommen: <gold>+<bonus> Coins<gray> (morgen: <gold>+<next></gold>)"
+login-streak-weekly: "<yellow>Wochen-Bonus! Du warst 7 Tage hintereinander dabei."
+join-quests: "<gray>Du hast heute noch <white><open></white> offene Aufgaben. <yellow>/aufgaben"
+quest-complete: "<green>Aufgabe geschafft: <white><name></white> <gold>+<coins> Coins"
+quest-all-done: "<gold>Alle Aufgaben von heute geschafft! <yellow>Bonus: +<coins> Coins"
+title-earned: "<green>Neuer Titel freigeschaltet: <title><green>! <gray>Wähle ihn mit /titel."
+title-new-holder: "<gold><player></gold> trägt jetzt den Titel <title><gold>!"
+admin-backup-done: "<green>Datenbank gesichert: <white><file>"
+admin-backup-failed: "<red>Die Sicherung ist fehlgeschlagen (siehe Konsole)."
+admin-stats-header: "<gold>=== CoinShop-Statistik ==="
+admin-stats-main: "<gray>Spieler: <white><players> <gray>| Coins im Umlauf: <white><total> <gray>| Durchschnitt: <white><average> <gray>| Reichster: <white><richest> (<richestcoins>)"
+admin-stats-shop: "<gray>Shop-Konto: <white><account> <gray>| Verkaufte Invest-Items: <white><invest> <gray>| Börsenkurs: <white><price>"
+admin-stats-24h: "<gold>Letzte 24 Stunden:"
+admin-stats-line: "<gray> - <white><type><gray>: <count>x, Summe <sum> Coins"
+admin-stats-none: "<gray>In den letzten 24 Stunden gab es keine Coin-Bewegungen."
+admin-log-header: "<gold>Letzte Coin-Bewegungen:"
+admin-log-line: "<dark_gray><time> <white><player> <gray><type>: <gold><amount> <dark_gray><detail>"
+admin-log-empty: "<gray>Keine Einträge gefunden."
+
+titles:
+  desc-richest: "<!italic><gray>Besitze die meisten Coins auf dem Server."
+  desc-rank: "<!italic><gray>Sei Erster in der Rangliste <white><rank></white><gray>."
+  desc-perm-streak: "<!italic><gray>Erreiche <white><value></white> <gray>Tage Login-Serie."
+  desc-perm-collections: "<!italic><gray>Schließe <white><value></white> <gray>Kollektionen ab."
+  desc-perm-secrets: "<!italic><gray>Entdecke <white><value></white> <gray>geheime Erfolge."
+  desc-perm-quests: "<!italic><gray>Schaffe <white><value></white> <gray>tägliche Aufgaben."
+  desc-perm-coins: "<!italic><gray>Besitze <white><value></white> <gray>Coins."
+  desc-perm-playtime: "<!italic><gray>Spiele insgesamt <white><value></white> <gray>Minuten."
+
+# ---------- Geheime Erfolge (Namen und Beschreibungen) ----------
+secret:
+  kleiner-fisch:
+    name: "Kleiner Fisch"
+    description: "<!italic><gray>Verkaufe dein erstes Item über den Spieler-Shop."
+  grosser-fisch:
+    name: "Großer Fisch"
+    description: "<!italic><gray>Verdiene 1.000 Coins über den Spieler-Shop."
+  blumentopf:
+    name: "Blumento Pferde?"
+    description: "<!italic><gray>Platziere einen Blumentopf."
+  phantom:
+    name: "Fick dich weg du Homofürst"
+    description: "<!italic><gray>Töte ein Phantom."
+  bier:
+    name: "Wo ist mein Bier?!"
+    description: "<!italic><gray>Braue einen Komischen Trank."
+  fledermaus:
+    name: "Oh Fledermäuse, die haben wir auch. Aber nur nachts."
+    description: "<!italic><gray>Töte eine Fledermaus oder sieh sie dir durch ein Fernglas an."
+  baby-zombie:
+    name: "Wie komme ich nur an diese Kinder ran?"
+    description: "<!italic><gray>Töte einen Babyzombie."
+  ei:
+    name: "Tom, zieh dir bitte eine lange Hose an"
+    description: "<!italic><gray>Wirf einen anderen Spieler mit einem Ei ab."
+  lohenrute:
+    name: "Ich bin am kochen mit meiner Prachtstange"
+    description: "<!italic><gray>Sammle eine Lohenrute ein."
+  baby-villager:
+    name: "Felix Merting"
+    description: "<!italic><gray>Versuche mit einem Baby-Villager zu handeln."
+  teppich:
+    name: "Kennst du meinen knall grünen Teppich ?… alles voller Kotze"
+    description: "<!italic><gray>Platziere einen grünen Teppich."
+  frosch:
+    name: "Ich muss die Frösche Sex machen lassen"
+    description: "<!italic><gray>Paare zwei Frösche."
+  schwein:
+    name: "Das hatte nichts mehr mit einem Big Tasty Bacon zu tun"
+    description: "<!italic><gray>Töte einen Zombifizierten Piglin."
+  kante:
+    name: "Alter, er hat mich von einer 1 Meter 50 hohen Kante runtergestoßen"
+    description: "<!italic><gray>Erleide Fallschaden aus mindestens 20 Blöcken Höhe und überlebe."
